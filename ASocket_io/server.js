@@ -1,10 +1,10 @@
 import express from "express";
 import http from "http";
-import { Server } from "socket.io";
+import { SocketServer } from "socket.io";
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server, {
+const io = new SocketServer(server, {
   cors: {
     origin: "http://127.0.0.1:5500", 
   }
@@ -19,7 +19,7 @@ const io = new Server(server, {
 //     console.log("Client says:", message);
 
 //     // Respond back
-//     socket.emit("server_message", `Server received: "${message}"`);
+//     socket.emit("server_message", `SocketServer received: "${message}"`);
 //   });
 
 //   socket.on("disconnect", () => {
@@ -47,5 +47,5 @@ socketNamespace.on("connection", (socket) => {
 });
 
 server.listen(3000, () => {
-  console.log("Server is running on port 3000");
+  console.log("SocketServer is running on port 3000");
 });
